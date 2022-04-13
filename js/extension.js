@@ -28,6 +28,7 @@ function ScanQR(image) {
 
 
 function TakeWholeScreen() {
+    console.log("takeWholeScreen");
     try {
         const screenshotTarget = document.documentElement;
         html2canvas(screenshotTarget)

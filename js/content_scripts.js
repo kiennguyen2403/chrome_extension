@@ -10,6 +10,7 @@ function ScanQR(image) {
         }).catch(err => {
             console.log(err);
         });
+    console.log("finish scan ")
 }
 
 
@@ -19,31 +20,33 @@ function TakeWholeScreen() {
         const screenshotTarget = document.documentElement;
         html2canvas(screenshotTarget)
             .then((canvas) => {
-                document.getElementsByTagName('body')[0].appendChild(canvas);
+                Cropimage(canvas);
         });
-        Cropimage();
-
     }
-
     catch(e) {
         console.log(e);
     }   
 }
 
 
-function Cropimage() {
+function Cropimage(image) {
 
 
     
     window.addEventListener("click", e => {
-        var image = document.getElementsByTagName("canvas")[0];
+      
         const cropper = new Cropper(image, {
             aspectRatio: 1/1,
+           
           
         });
+            window.addEventListener("keypress",function(){
             var returnimage = cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 });
             console.log(returnimage);
-            ScanQR(returnimage);
+            
+
+
+            });
       
     })
 }
