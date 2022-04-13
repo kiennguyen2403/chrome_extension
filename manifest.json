@@ -1,0 +1,29 @@
+{
+    "name": "Scan QR code",
+    "version": "1.0.0",
+    "description": "QR code scanner",
+    "manifest_version": 3,
+    "author": "Nguyen Trung Kien",
+    "content_scripts": [ 
+    {
+        "matches": ["<all_urls>"],
+        "js": ["./js/content_scripts.js","./node_modules/html2canvas/dist/html2canvas.js","./node_modules/qr-scanner/qr-scanner.umd.min.js","./node_modules/cropperjs/dist/cropper.js"],
+        "css": ["./css/canvas.css","./node_modules/cropperjs/dist/cropper.css"]
+    } ],
+    "background": {"service_worker":"./js/background.js"},
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "QR code scanner",
+        "default_icon" :{
+            "16" :"/pictures/logo.png",
+            "32" :"/pictures/logo.png"
+        }
+    },
+    "permissions":["storage","activeTab","declarativeContent","scripting","desktopCapture"],
+    "icons":{
+        "16":"./pictures/logo.png",
+        "32":"/pictures/logo.png"
+    
+    
+    }
+}

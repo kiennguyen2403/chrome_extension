@@ -1,0 +1,29 @@
+
+
+
+body {
+    display:flex;
+    flex-direction:row;
+}
+
+
+button{
+    border-radius: 30px;
+    border:1px gray solid;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background: white;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+
+button:hover{
+
+    background: gray;
+    color: white;
+    transition: 0.3s
+}   
+
+
+
