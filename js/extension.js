@@ -3,14 +3,10 @@ function GenerateQR() {
     QRCode.toCanvas(canvas, window.location.href, function(error) {
         if (error) {
            console.error(error);
-        }
-        console.log("success!");
-    })
+        };
+        console.log("Success!");
+    });
 };
-
-
-
-
 
 function ScanQR(image) {
     QrScanner.scanImage(image)
@@ -19,8 +15,7 @@ function ScanQR(image) {
         }).catch(err => {
             console.log(err);
         });
-}
-
+};
 
 function TakeWholeScreen() {
     console.log("takeWholeScreen");
@@ -31,13 +26,10 @@ function TakeWholeScreen() {
                 document.getElementById('result').appendChild(canvas);
         });
         Cropimage();
-    }
-
-    catch(e) {
+    } catch(e) {
         console.log(e);
-    }   
-}
-
+    };  
+};
 
 function Cropimage() {
     window.addEventListener("click", e => {
@@ -56,20 +48,15 @@ function Cropimage() {
         });
         button2 = document.getElementById("getdata");
         button2.addEventListener("click", () => {
-            const returnimage = cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 });
-    
-            ScanQR("./pictures/Capture.PNG");
+            const returnimage = cropper.getCroppedCanvas({maxWidth: 4096, maxHeight: 4096});
+            ScanQR("../images/Capture.png");
         });
-    })
-}
-
+    });
+};
 
 function init() {
     button = document.getElementById("trigger");
     button.onclick = TakeWholeScreen;
-
     generate_code = document.getElementById("generate_code");
     generate_code.addEventListener("click", GenerateQR);
-}
-
-
+};
