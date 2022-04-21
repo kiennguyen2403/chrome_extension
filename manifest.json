@@ -7,21 +7,21 @@
     "content_scripts": [ 
     {
         "matches": ["<all_urls>"],
-        "js": ["js/content_scripts.js","js/node_modules/html2canvas/dist/html2canvas.js","js/node_modules/qr-scanner/qr-scanner.umd.min.js","js/node_modules/cropperjs/dist/cropper.js"],
-        "css": ["css/canvas.css","node_modules/cropperjs/dist/cropper.css"]
+        "js": ["./js/content_scripts.js","./js/node_modules/html2canvas/dist/html2canvas.js","./js/node_modules/qr-scanner/qr-scanner.umd.min.js","./js/node_modules/cropperjs/dist/cropper.js"],
+        "css": ["./css/canvas.css","./js/node_modules/cropperjs/dist/cropper.css"]
     } ],
-    "background": {"service_worker":"js/background.js"},
+    "background": {"service_worker":"./js/background.js"},
     "action":{
-        "default_popup": "html/index.html",
+        "default_popup": "./html/index.html",
         "default_title": "QR scanner & generator",
         "default_icon" :{
-            "16" :"images/logo.png",
-            "32" :"images/logo.png"
+            "16" :"./images/logo.png",
+            "32" :"./images/logo.png"
         }
     },
     "permissions":["storage","activeTab","declarativeContent","scripting","desktopCapture"],
     "icons":{
-        "16":"images/logo.png",
-        "32":"images/logo.png"
+        "16":"./images/logo.png",
+        "32":"./images/logo.png"
     }
 }

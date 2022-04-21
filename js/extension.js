@@ -1,16 +1,11 @@
-
-
-
-function GenerateQR()
-{
-
+function GenerateQR() {
     var canvas = document.getElementsByTagName('canvas')[0];
-   QRCode.toCanvas(canvas,window.location.href,function(error){
-       if (error){
+    QRCode.toCanvas(canvas, window.location.href, function(error) {
+        if (error) {
            console.error(error);
-       }
-       console.log("success!");
-   })
+        }
+        console.log("success!");
+    })
 };
 
 

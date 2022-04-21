@@ -1,7 +1,3 @@
-
-
-
-
 function ScanQR(image) {
     console.log("ScanQR");
     QrScanner.scanImage(image)
