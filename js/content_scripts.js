@@ -2,25 +2,17 @@
 
 
 
-function ScanQR(image) {
-    console.log("ScanQR");
-    QrScanner.scanImage(image)
-        .then(result => {
-            console.log(result)
-        }).catch(err => {
-            console.log(err);
-        });
-    console.log("finish scan ")
-}
 
 
-function TakeWholeScreen() {
+function ScanQRcode() {
     try {
        
         const screenshotTarget = document.documentElement;
         html2canvas(screenshotTarget)
             .then((canvas) => {
-                Cropimage(canvas);
+                document.getElementsByTagName('body')[0].appendChild(canvas);
+        }).then(function(){
+            Cropimage()
         });
     }
     catch(e) {
@@ -29,38 +21,50 @@ function TakeWholeScreen() {
 }
 
 
-function Cropimage(image) {
-
-
-    
-    window.addEventListener("click", e => {
-      
+function  Cropimage() 
+{             
+        var image = document.getElementsByTagName("canvas")[0];
         const cropper = new Cropper(image, {
             aspectRatio: 1/1,
            
           
         });
-            window.addEventListener("keypress",function(){
-            var returnimage = cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 });
-            console.log(returnimage);
-            
 
-
+            window.addEventListener("keypress",function()
+            {
+            var returnimage = cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })
+            if (returnimage != null)      
+            {
+            QrScanner.scanImage(returnimage)
+            .then(result => {
+                alert(result);
+            }).catch(err => {
+                alert(err);
             });
+              console.log("finish scan ")
+            }
+            
+            });
+
+            
       
-    })
+        
 }
 
 chrome.runtime.onMessage.addListener(
 function(request, sender,sendResponse)
 {   
-
+   
 
     if (request.command === "scan")
     {   
        
-        TakeWholeScreen();
-        sendResponse({result:"success"})
+        ScanQRcode();
+        sendResponse({result:"success"});
+
+
+      
+      
       
     }
     else{
@@ -77,12 +81,9 @@ window.addEventListener("load",()=>{
     chrome.storage.sync.get('action', function(data) {
     if (data.action =="scan")
     {
-        TakeWholeScreen()
+        ScanQRcode();
      
     }
-    else
-    {
-        sendResponse({result:"success",url:window.location.href})
-    }
+   
 });
 })

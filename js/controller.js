@@ -31,6 +31,7 @@ scanqr.addEventListener("click", function(){
         {
             console.log(response.result);
             
+            
         })
     })
 

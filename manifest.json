@@ -7,9 +7,12 @@
     "content_scripts": [ 
     {
         "matches": ["<all_urls>"],
-        "js": ["./js/content_scripts.js","./node_modules/html2canvas/dist/html2canvas.js","./node_modules/qr-scanner/qr-scanner.umd.min.js","./node_modules/cropperjs/dist/cropper.js"],
-        "css": ["./css/canvas.css","./node_modules/cropperjs/dist/cropper.css"]
+        "js": ["./js/content_scripts.js","./node_modules/html2canvas/dist/html2canvas.js","./node_modules/qr-scanner/qr-scanner-worker.min.js","./node_modules/qr-scanner/qr-scanner.umd.min.js","./node_modules/cropperjs/dist/cropper.js"],
+        "css": ["./node_modules/cropperjs/dist/cropper.css","./css/canvas.css"]
     } ],
+    "web_accessible_resources": [
+       
+     ],
     "background": {"service_worker":"./js/background.js"},
     "action":{
         "default_popup": "index.html",
@@ -23,7 +26,5 @@
     "icons":{
         "16":"./pictures/logo.png",
         "32":"/pictures/logo.png"
-    
-    
     }
 }

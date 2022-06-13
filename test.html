@@ -13,7 +13,8 @@
    
     <script src="./node_modules/html2canvas/dist/html2canvas.js"></script>
     <script  src="./node_modules/cropperjs/dist/cropper.js" ></script>
-    <script  src="./node_modules/qr-scanner/qr-scanner.umd.min.js"></script>
+    <script  src="./node_modules/qr-scanner/qr-scanner.min.js"></script>
+    <script  src="./node_modules/qr-scanner/qr-scanner-worker.min.js"></script>
     <script  src="./node_modules/qrcode/build/qrcode.js"></script>
     <!--script js -->
     <title>QR Code scanner</title>
@@ -24,6 +25,9 @@
 <button type="button" id="trigger"> Screenshot</button>
 <button type="button" id="getdata">Get Cropped Canvas</button>
 <button type="button" id="generate_code">Generate Code</button>
+<p>
+<img src="./qrcode.png" alt="qrcode"/>
+</p>
 <p id ="result"> </p>
 </section>
 <script src="./js/extension.js"></script>
