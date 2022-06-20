@@ -1,30 +1,34 @@
-chrome.runtime.onInstalled.addListener(function(){
-  chrome.storage.sync.set({action:"generate"},function(){
-    console.log("Start the extension");
-  });
+function ScanQR(image){
+    QrScanner.scanImage(image)
+    .then(result => {
+        alert(result)
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+chrome.runtime.onInstalled.addListener(function() {
+	chrome.storage.sync.set({action: "generate"}, function() {
+		console.log("Started the extension.");
+	});
 });
 
-chrome.runtime.onConnect.addListener(function(){
-  console.log("Connect")
-  chrome.storage.sync.get('qrcode',function(data)
-  {
-    console.log(data.qrcode);
-  }
-)
-
-})
+chrome.runtime.onConnect.addListener(function() {
+	console.log("Connected.");
+	chrome.storage.sync.get('generate', function(data) {
+		console.log(data.qrcode);
+	});
+});
 
 
+chrome.runtime.onMessage.addListener(function (response,sender,sendResponse) 
+{
 
-/*
-
-chrome.declarativeContent.onPageChanged.removeRules(undefined,function(){
-  chrome.declarativeContent.onPageChanged.addRules([{
-    condition: [new chrome.declarativeContent.PageStateMatcher({
-      pageUrl:{urlPrefix:"https://"}
-    })]
-  }])
-})
-
-
-*/
+    if(response.action=="sendimages")
+    {
+        const image = document.getElementsByTagName(response.image)[0]
+        console.log(image)
+        const url = ScanQR(image);
+        sendResponse({url:url});
+    }
+}) 

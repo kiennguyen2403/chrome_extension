@@ -4,13 +4,22 @@ canvas{
     position:absolute;
     z-index:10;
     top:0px;
-
 }
 
-.cropper-container{
-    top:0px;
+.cropper-drag-box{
     position:absolute;
-    z-index: 10000;
+    z-index: -1;
 }
 
-
+.getimagebutton{
+    z-index:1000000;
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+}
